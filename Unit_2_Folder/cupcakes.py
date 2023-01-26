@@ -1,4 +1,4 @@
-from abc import (ABC, abstractmethod,)
+from abc import ABC, abstractmethod
 import csv
 from pprint import pprint
 
@@ -11,6 +11,8 @@ class Cupcake():
         self.frosting = frosting
         self.filling = filling
         self.sprinkles = []
+       
+
 
         # my_cupcake.frosting = "Chocolate"
         # my_cupcake.filling = "Chocolate"
@@ -19,6 +21,8 @@ class Cupcake():
     def add_sprinkles(self, *args):
             for sprinkle in args:
                 self.sprinkles.append(sprinkle) 
+    
+
 
     @abstractmethod
     def calculate_price(self, quantity):
@@ -41,6 +45,7 @@ class Mini(Cupcake):
         self.frosting = frosting
         self.filling = filling
         self.sprinkles = sprinkles
+ 
 
     def calculate_price(self, quantity):
          return quantity * self.price
@@ -61,6 +66,7 @@ class Jumbo(Cupcake):
         self.frosting = frosting
         self.filling = filling
         self.sprinkles = sprinkles
+      
 
     def calculate_price(self, quantity):
         return quantity * self.price
@@ -79,6 +85,7 @@ class Duo(Cupcake):
         self.frosting = frosting
         self.filling = filling
         self.sprinkles = sprinkles
+        
 
     def calculate_price(self, quantity):
         return quantity * self.price
@@ -109,6 +116,11 @@ with open("cupcakes.csv") as csvfile:
         cupcake3,
         cupcake4
     ]
+# 
+
+
+#============================================================================================
+
 
     def write_new_csv(file, cupcakes):
         with open(file, "w", newline="\n") as csvfile:
@@ -117,75 +129,60 @@ with open("cupcakes.csv") as csvfile:
             
             writer.writeheader()
 
-    def cupcake_obj(file, cupcakes):
-        with open(file, "w", newline="\n") as csvfile:
-            fieldnames = ["size", "name", "price", "flavor", "frosting", "sprinkles", "filling"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-            writer.writeheader()
-
             for cupcake in cupcakes:
                 if hasattr(cupcake, "filling"):
                     writer.writerow({"size":cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "filling": cupcake.filling, "sprinkles": cupcake.sprinkles})
                 else:
                     writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "sprinkles": cupcakes.sprinkles})
 
-        write_new_csv("cupcakes.csv",cupcake_list)
+# ==============================================
 
     def add_cupcake(file, cupcake):
         with open(file, "a", newline="\n") as csvfile:
             fieldnames = ["size", "name", "price", "flavor", "frosting", "sprinkles", "filling"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
+            
             if hasattr(cupcake, "filling"):
                 writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "filling": cupcake.filling, "sprinkles": cupcake.sprinkles})
             else:
                 writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "sprinkles": cupcake.sprinkles})
-
-    def get_all_cupcakes(csvfile):
+            
+            
+    def get_cupcakes(file):
         with open("cupcakes.csv") as csvfile:
             reader = csv.DictReader (csvfile)
-            return reader
+            return list(reader)
 
-    print(get_all_cupcakes(csvfile))
+    print(get_cupcakes(csvfile))
 
 
-    def search_cupcake(file,name):
-        for cupcake in get_all_cupcakes(file):
+    def find_cupcake(file,name):
+        for cupcake in get_cupcakes(file):
             if cupcake ['name'] == name:
-                return cupcake 
-
-    List = ['double fudge brownie', 5.00, 'fudge', 'chocolate',' caramel', 'chocolate']
-
-    def new_cupcake(file, cupcake):
+                return cupcake
+            return None
+            
+    def add_cupcake_dictionary(file, cupcake):
         with open(file, "a", newline="\n") as csvfile:
             fieldnames = ["size", "name", "price", "flavor", "frosting", "sprinkles", "filling"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writerow(cupcake)
 
-            writer.writerow(cupcake) 
+           
 
-    in cupcakes.py
-    def get_cupcakes(file):
+
+    def read_csv(file):
         with open(file) as csvfile:
-         reader = csv.DictReader(csvfile)
-         reader = list(reader)
-        return reader
+            reader = csv.DictReader(csvfile)
 
-    in server.py
-    from cupcakes import get_cupcakes
+        for row in reader:
+            pprint(row)
+
+  
 
 
-def find_cupcake(file, name):
-    for cupcake in get_cupcakes(file):
-        if cupcake["name"] == name:
-            return cupcake
-    return None
 
-def add_cupcake_dictionary(file, cupcake):
-    with open(file, "a", newline="\n") as csvfile:
-        fieldnames = ["size", "name", "price", "flavor", "frosting", "sprinkles", "filling"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writerow(cupcake)
+
 
 
                 
