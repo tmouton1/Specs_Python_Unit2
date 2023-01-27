@@ -10,18 +10,16 @@ h1{
 
   }
   body {
-    background-image: url("brooke-lark-pGM4sjt_BdQ-unsplash.jpg");
+    background-image: url("isabella-and-zsa-fischer-8bqHLkhArtc-unsplash.jpg");
     background-color: #cccccc;
     background-position: center;
     background-size: cover;
     height: 500px;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 
    }
 div {
 background: wheat
 
-}
-.navbar-brand{
-  font-size:medium
 }

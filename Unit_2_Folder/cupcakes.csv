@@ -1,5 +1,5 @@
 size,name,price,flavor,frosting,sprinkles,filling
-regular,red velvet, 5.00, chocolate, cream cheese,vanilla
-Mini,strawberry shortcake, 3.00, strawberry, whipped cream,strawberry jam
-Jumbo,peanut butter swirl, 7.00, peanut butter chocolate,chocolate,peanut butter
-Duo choco freeze, 9.00, 'mint chocolate', 'chocolate',' mint chip fudge'
+regular,red velvet,5.75,chocolate,cream cheese,[],vanilla
+mini,strawberry shortcake,3.75,strawberry,whipped cream,lemon,strawberry jam
+extra large,peanut butter swirl,7.75,peanut butter chocolate,chocolate,resees,peanut butter
+two minis,choco freeze,9.75,mint chocolate,chocolate,peppermint, mint chip fudge
