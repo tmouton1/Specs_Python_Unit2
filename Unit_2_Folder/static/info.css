@@ -4,18 +4,20 @@ h1{
     
       
   }
-  h2{
+  p{
 
-    color: navy 
+    color: rgb(66, 5, 66) 
 
   }
   body {
-    background-image: url("brooke-lark-pGM4sjt_BdQ-unsplash.jpg");
+    background-image: url("keila-hotzel-Io3oqnjiN0Q-unsplash.jpg");
     background-color: #cccccc;
     background-position: center;
     background-size: cover;
     height: 500px;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
 
    }
 div {

@@ -7,28 +7,31 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
-    
-app.route('/info')
-def get_info():
-    return render_template("info.html")
+    return render_template("index.html", cupcakes = get_cupcakes("cupcakes.csv"))    
 
 @app.route("/cupcakes")
 def see_cupcakes():
     return render_template("cupcakes.html", cupcakes=get_cupcakes("cupcakes.csv"))
 
-CUPCAKES = get_cupcakes('cupcakes.csv')
 
 @app.route("/order")
 def get_order():
-   return render_template("order.html")
+    place_order=get_cupcakes("orders.csv")
+    return render_template("order.html")
 
-@app.route("/cupcake-individual")
+@app.route("/info")
+def about_info():
+    return render_template("info.html")
+
+# ===============================
+@app.route("/individual")
 def individual_cupcake():
-        return render_template("individual-cupake.html")
+    return render_template("individual.html")
 
 
 
+
+    
 
 
     # ===============================
