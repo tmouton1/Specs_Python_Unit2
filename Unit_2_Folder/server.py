@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect
-from cupcakes import get_cupcakes, find_cupcake, add_cupcake_dictionary, cupcake1,cupcake2,cupcake3,cupcake4
+from cupcakes import get_cupcakes, find_cupcake, add_cupcake_dictionary
 
 
 app = Flask(__name__)
@@ -13,10 +13,19 @@ def home():
 def see_cupcakes():
     return render_template("cupcakes.html", cupcakes=get_cupcakes("cupcakes.csv"))
 
+@app.route("/add-cupcake/<name>")
+def add_cupcake(name):
+    cupcake = find_cupcake("cupcakes.csv", name)
+
+    if cupcake:
+        add_cupcake_dictionary("orders.csv", cupcake)
+        return redirect(url_for("home"))
+    else:
+        return "Sorry cupcake not found."
 
 @app.route("/order")
 def get_order():
-    place_order=get_cupcakes("orders.csv")
+    
     return render_template("order.html")
 
 @app.route("/info")
@@ -35,10 +44,8 @@ def about_info():
 
 @app.route("/individual")
 def individual_cupcake():
-    cupcake_list = ['Strawbery Shortcake', 'Red Velvet','Choco Freeze', 'Peanut Butter Swirl'
-
-    ]
-    return render_template("individual.html",cupcake_list=cupcake_list)
+    cakes = ['Strawberry Shortcake', 'Choco Freeze', 'Peanut Butter Swirl', 'Strawbery Shortcake']
+    return render_template("individual.html", cakes=cakes)
 
     
 

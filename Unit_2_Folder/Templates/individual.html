@@ -11,28 +11,17 @@
 <body>
     
 
-   <h1>Our List of Cupcakes!</h1><br>
-  
-<!-- 
-   {% for cupcake in cupcakes %}
-   <h3>{{ cupcake["name"] }}</h3>
-   <h4>Flavor: {{ cupcake["flavor"] }}</h4>
-   <h4>Frosting: {{ cupcake["frosting"] }}</h4>
-   <h4><b>Price: ${{ cupcake["price"] }}</b></h4>
-   <a href="{{ url_for('see_cupcakes') }}">
-       <button>Add to Cart</button>
-   </a>
-   {% endfor %} -->
+   <h1>Cupcakes Of The Day!</h1><br>
 
-   <ul>
-    {% for cupcake in cupcake_list %}
-    <h2>{{cupcake}}</h2>
+<ul>
+    {% for cake in cakes %}
+    <li>{{cake}}</li>
     {% endfor %}
 </ul>
 
-   
-
-
+{% if 'Strawberry Shortcake' in cakes %}
+<p>Check out our Strawberry Shortcake!</p>
+{% endif %}
 
 </body>
 

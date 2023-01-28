@@ -12,29 +12,32 @@ class Cupcake():
         self.filling = filling
         self.sprinkles = []
        
-
-
         # my_cupcake.frosting = "Chocolate"
         # my_cupcake.filling = "Chocolate"
         # my_cupcake.name = "Triple Chocolate"
 
     def add_sprinkles(self, *args):
-            for sprinkle in args:
-                self.sprinkles.append(sprinkle) 
+     for sprinkle in args:
+      self.sprinkles.append(sprinkle) 
     
-
-
     @abstractmethod
     def calculate_price(self, quantity):
-        return quantity * self.price
+     return quantity * self.price
 
-my_cupcake = Cupcake(name='red velvet', price=5.00, flavor='chocolate', frosting='cream cheese',filling='vanilla', sprinkles='cinnamon')
+my_cupcake = Cupcake(name='red velvet', price=5.75, flavor='chocolate', frosting='cream cheese',filling='vanilla', sprinkles='cinnamon')
                 
 my_cupcake.add_sprinkles('cinammon', 'powdered sugar')
 
 print(my_cupcake.sprinkles)
 # print(my_cupcake.price)
 # print(my_cupcake.filling)
+
+class Regular(Cupcake):
+    size = "regular"
+
+    def calculate_price(self, quantity):
+        return quantity * self.price
+
 
 class Mini(Cupcake):
     size = "mini"
@@ -50,7 +53,7 @@ class Mini(Cupcake):
     def calculate_price(self, quantity):
          return quantity * self.price
 
-my_cupcake_mini = Mini(name='strawberry shortcake', price=3.00, flavor='strawberry', frosting='whipped cream',filling='strawberry jam', sprinkles='lemon')
+my_cupcake_mini = Mini(name='strawberry shortcake', price=3.75, flavor='strawberry', frosting='whipped cream',filling='strawberry jam', sprinkles='lemon')
 
 print(my_cupcake_mini.filling)
 print(my_cupcake_mini.frosting)
@@ -71,7 +74,7 @@ class Jumbo(Cupcake):
     def calculate_price(self, quantity):
         return quantity * self.price
         
-my_cupcake_jumbo = Jumbo(name='peanut butter swirl', price=7.00, flavor='peanut butter chocolate', frosting='chocolate',filling='peanut butter', sprinkles='resees')
+my_cupcake_jumbo = Jumbo(name='peanut butter swirl', price=7.75, flavor='peanut butter chocolate', frosting='chocolate',filling='peanut butter', sprinkles='resees')
 
 print(my_cupcake_jumbo.frosting)
 print(my_cupcake_jumbo.price)
@@ -90,7 +93,7 @@ class Duo(Cupcake):
     def calculate_price(self, quantity):
         return quantity * self.price
 
-my_cupcake_duo = Duo(name='choco freeze', price=9.00, flavor='mint chocolate', frosting='chocolate',filling=' mint chip fudge', sprinkles='peppermint')
+my_cupcake_duo = Duo(name='choco freeze', price=9.75, flavor='mint chocolate', frosting='chocolate',filling=' mint chip fudge', sprinkles='peppermint')
 
 print(my_cupcake_duo.frosting)
 print(my_cupcake_duo.sprinkles
@@ -116,9 +119,7 @@ with open("cupcakes.csv") as csvfile:
         cupcake3,
         cupcake4
     ]
-# 
 #============================================================================================
-
 
 def write_new_csv(file, cupcakes):
     with open(file, "w", newline="\n") as csvfile:
